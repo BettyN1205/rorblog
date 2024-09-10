@@ -1,1 +1,31 @@
 <h1>homepage</h1>
+
+<p>
+     rails generate scaffold BlogArticle title:string description:text
+</p>
+
+<p>
+    rails db:migrate
+</p>
+
+<p>
+     http://localhost:3000/blog_articles/ne
+</p>
+
+<p>
+    在models里建立blog_article.rb文件，然后在文件中输入：
+    class BlogArticle < ApplicationRecord
+end
+</p>
+<p>
+    在Terminal里面输入 rails c ，c是class的意思，然后输入classname.all, 即BlogArticle.all， Terminal上就会开始创建并显示得到sql数据
+</p>
+
+<p>
+    1. create方法：BlogArticle.create(title:"the 3 article", description:"description 3")
+</p>
+<p>
+    2. new + save方法: article4 = BlogArticle.new(title: "the 3 article", description: "description 3")
+article.save
+
+</p>
