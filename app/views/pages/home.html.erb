@@ -273,5 +273,47 @@ destroy：处理删除资源的请求。
     </tbody>
 </table>
 
+</br>
+<P>
+    为什么new.html.erb文件中是 url: article_index_path，而不是url: new_article_path
+</br></br>
+在 new.html.erb 文件中，表单的 url 应该指向提交表单的路径（create 动作），而不是 new 动作。因此，应该使用 article_index_path，而不是 new_article_path。
+</P>
+
+<br>
+<br>
+<h1>form_with 使用讲解</h1>
+    <p><code>form_with</code> 是 Rails 中用于生成表单的辅助方法。它的主要作用是创建 HTML 表单，允许用户向服务器提交数据。</p>
+    
+    <h2>基本用法</h2>
+    <pre><code>
+&lt;%= form_with scope: :article, url: article_index_path, local: true do |f| %&gt;
+  &lt;!-- 表单字段 --&gt;
+&lt;% end %&gt;
+    </code></pre>
+    
+    <h2>参数解释</h2>
+    <ul>
+        <li><strong>scope: :article</strong>：指定表单的数据模型为 <code>article</code>，生成与 <code>Article</code> 模型关联的表单字段。</li>
+        <li><strong>url: article_index_path</strong>：设置表单提交的 URL 地址。这里的 <code>article_index_path</code> 指向 <code>create</code> 动作，处理表单提交（<code>POST</code> 请求）。</li>
+        <li><strong>local: true</strong>：指定表单提交使用传统的同步请求方式，而不是默认的 AJAX 异步提交。</li>
+    </ul>
+    
+   <h1>form_with 中的块参数 <code>|f|</code> 讲解</h1>
+    
+    <h2>常用方法</h2>
+    <ul>
+        <li><strong><code>f.text_field</code></strong>：生成文本输入框。例：<code>&lt;%= f.text_field :title %&gt;</code></li>
+        <li><strong><code>f.text_area</code></strong>：生成多行文本输入框。例：<code>&lt;%= f.text_area :body %&gt;</code></li>
+        <li><strong><code>f.password_field</code></strong>：生成密码输入框。例：<code>&lt;%= f.password_field :password %&gt;</code></li>
+        <li><strong><code>f.check_box</code></strong>：生成复选框。例：<code>&lt;%= f.check_box :published %&gt;</code></li>
+        <li><strong><code>f.radio_button</code></strong>：生成单选按钮。例：<code>&lt;%= f.radio_button :status, 'draft' %&gt; Draft</code></li>
+        <li><strong><code>f.select</code></strong>：生成下拉菜单。例：<code>&lt;%= f.select :category, ['Technology', 'Health', 'Finance'] %&gt;</code></li>
+        <li><strong><code>f.label</code></strong>：生成表单字段的标签。例：<code>&lt;%= f.label :title, 'Article Title' %&gt;</code></li>
+        <li><strong><code>f.submit</code></strong>：生成提交按钮。例：<code>&lt;%= f.submit 'Create Article' %&gt;</code></li>
+    </ul>
+    
+    
+
 </body>
 </html>
